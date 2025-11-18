@@ -1,0 +1,894 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ528NM6VE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HQ528NM6VE');
+    </script>
+
+    <script>
+        window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        svg: { fontCache: 'global' }
+        };
+    </script>
+    <!-- Favicon references -->
+
+    <meta
+        content="TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling"
+        name="description" />
+    <meta
+        content="TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling"
+        property="og:title" />
+    <meta
+        content="TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling"
+        property="og:description" />
+    <meta
+        content="TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling"
+        property="twitter:title" />
+    <meta
+        content="TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling"
+        property="twitter:description" />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap"
+        rel="stylesheet">
+    <link href="style.css%3F.css" rel="stylesheet" type="text/css" />
+
+    <!-- 🔎 Added minimal CSS for click‑to‑zoom lightbox -->
+    <style>
+      /* make images clearly zoomable */
+      img.zoomable { cursor: zoom-in; transition: transform .2s ease; }
+
+      /* fullscreen overlay */
+      .lightbox-overlay {
+        position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+        background: rgba(0,0,0,.9); z-index: 10000;
+      }
+      .lightbox-overlay.active { display: flex; }
+      .lightbox-overlay img { max-width: 95vw; max-height: 95vh; box-shadow: 0 10px 40px rgba(0,0,0,.6); border-radius: 8px; }
+      /* show zoom-out cursor while overlay is open */
+      .lightbox-overlay, .lightbox-overlay * { cursor: zoom-out; }
+
+      /* prevent background scroll when overlay is open */
+      body.no-scroll { overflow: hidden; }
+    </style>
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+
+<body>
+    <!-- <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html#overview">Overview</a></li>
+                    <li><a href="index.html#motivation">Motivation</a></li>
+                    <li><a href="index.html#experimental-results">Experiment</a></li>
+                    <li><a href="index.html#conclusion">Conclusion</a></li>
+                    <li><a href="index.html#citation">Citation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> -->
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="title-row">
+                <div class="title-flex">
+                    <div class="title-text-block">
+                        <!-- <h1 class="title"><span class="gradient-text">TAG</span>: Tangential Amplifying Guidance for <span class="title-break"></span>  Hallucination-Resistant Diffusion Sampling</h1> -->
+                         <h1 class="title">
+                            TAG: <span class="plum-text">T</span>angential <span class="plum-text">A</span>mplifying <span class="plum-text">G</span>uidance for <span class="title-break"></span> Hallucination-Resistant Diffusion Sampling
+                        </h1>
+                        <h1 class="subtitle"><span class="plum-text">arXiv 2025</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="base-row author-row">
+                <div class="base-col author-col">
+                    <a href= "https://github.com/hyeon-cho" target ="_blank" class="author-text">
+                        Hyunmin Cho<sup>1,*</sup>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://sunovivid.github.io/" target="_blank" class="author-text">
+                        Donghoon Ahn<sup>2,*</sup>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://susunghong.github.io/" target="_blank" class="author-text">
+                        Susung Hong<sup>3,*</sup>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://github.com/jeeeun-k" target="_blank" class="author-text">
+                        Jee Eun Kim<sup>1</sup>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://cvlab.kaist.ac.kr/" target="_blank" class="author-text">
+                        Seungryong Kim<sup>4,†</sup>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://ipa.korea.ac.kr/" target="_blank" class="author-text">
+                        Kyong Hwan Jin<sup>1,†</sup>
+                    </a>
+                </div>
+            </div>
+
+            <div class="base-row author-row">
+                <div class="base-col author-col affiliations">
+                    <!-- <sup>1</sup>KAIST AI &nbsp;&nbsp; <sup>2</sup>Korea Aerospace University &nbsp;&nbsp; -->
+                    <sup>1</sup>Korea University &nbsp;&nbsp; <sup>2</sup>University of California, Berkeley &nbsp;&nbsp; <sup>3</sup>University of Washington &nbsp;&nbsp; <sup>4</sup>KAIST AI &nbsp;&nbsp;
+                    <br>
+                    <sup>*</sup>co-first authors &nbsp;&nbsp; <sup>†</sup>corresponding authors
+                </div>
+            </div>
+            <div class="link-labels base-row">
+                <div class="base-col icon-col"><a href="https://arxiv.org/abs/2510.04533" target="_blank"
+                        class="link-block">
+                        <img src="./asset/arXiv.png" alt="Hugging Face Logo" style="height: 5.0em; vertical-align: middle;">
+                        <strong class="link-labels-text">PDF</strong>
+                    </a></div>
+                                    <div class="base-col icon-col"><a href='https://huggingface.co/papers/2510.04533' class="link-block">
+                         <span class="icon">
+                       <img src="./asset/hf-logo.png" alt="Hugging Face Logo" style="height: 5.0em; vertical-align: middle;">
+                  </span>
+                        <strong class="link-labels-text">Paper</strong>
+                    </a></div>
+                <div class="base-col icon-col"><a href='https://huggingface.co/spaces/hyeoncho01/Tangential-Amplifying-Guidance' class="link-block">
+                         <span class="icon">
+                       <img src="./asset/hf-logo.png" alt="Hugging Face Logo" style="height: 5.0em; vertical-align: middle;">
+                  </span>
+                        <strong class="link-labels-text">DEMO</strong>
+                    </a></div>
+                <div class="base-col icon-col"><a href='https://github.com/hyeon-cho/Tangential-Amplifying-Guidance' class="link-block">
+                         <span class="icon">
+                       <img src="./asset/github-mark.svg" alt="Github Logo" style="height: 5.0em; vertical-align: middle;">
+                  </span>
+                        <strong class="link-labels-text">Code</strong>
+                    </a></div>
+                <div class="base-col icon-col"><a href="index.html#citation" class="link-block">
+                        <img src="./asset/Scholar.png" alt="Hugging Face Logo" style="height: 5.0em; vertical-align: middle;">
+                        <strong class="link-labels-text">Citation</strong>
+                    </a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <main class="main-content">
+
+        <div class="container">
+                <img id="teaser" src="./asset/qualitative/teaser_qual.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+            <div class="tldr">
+                <b>TL;DR</b>: We amplify the tangential part of each sampler update while keeping the radial term unchanged, steering trajectories along higher-density regions, resulting in higher-quality samples.
+            </div>
+
+            <div id="overview" class="base-row section">
+                <h2>Overview</h2>
+                <p class="paragraph">
+                    Diffusion models often hallucinate by drifting off the data manifold. Tangential Amplifying Guidance (TAG) is a <strong>plug-and-play, architecture-agnostic inference method</strong> that amplifies the tangential component of each update while preserving the radial term, 
+                    <strong>steering trajectories toward higher-density regions</strong> and improving fidelity without extra model evaluations.
+                </p>
+            </div>
+            <h3>
+                Conceptual Visualization of TAG
+            </h3>
+                    <img id="teaser" src="./asset/fig1.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+            <p class="paragraph"> While standard sampling produces <strong>hallucinations</strong> by drifting into low-probability areas, <strong>TAG</strong> guides the generation process toward high-probability regions, resulting in higher-quality samples.
+            </p>
+
+            <section id="motivation" class="section">
+                <h2>Motivation</h2>
+                    <img id="teaser" src="./asset/motivation.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                <p class="paragraph">
+                    Our motivation stems from Tweedie's formula, which reveals that the score function, \(\Delta_x \log p(x\mid t_k)\), points toward high-probability data regions. Our goal is to emphasize this 'data term' without perturbing the scheduler's prescribed noise schedule.
+                </p>
+                <div class="two-col">
+                    <div class="col-left">
+                        <h3>
+                            What is implied by “Tangential”<br> (i.e., Data Term)?
+                        </h3>
+                        <p class="paragraph">
+                            We visualize each latent per timesteps. The original update  \(\Delta_k:=\boldsymbol{x}_{k-1}-\boldsymbol{x}_{k}\)  contains a mix of structural information and noise. 
+        We decompose this update into a <strong> normal component \(P_{k}\Delta_k\)</strong> and a <strong>tangential component \(P^{\perp}_{k}\Delta_k\)</strong>. 
+        <strong>Normal component</strong> is largely unstructured and noisy, while 
+        <strong>Tangential component</strong> clearly preserves the primary semantic structure.
+                        </p>
+                    </div>
+                    <div class="col-right img">
+                                <img id="teaser" src="./asset/fig2.jpg" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                                <p class="image-caption">
+                                    Visualization of Normal \(P_{k}\Delta_k\) and Tangential \(P^{\perp}_{k}\Delta_k\) Components. Tangential components contains rich semantic informations.
+                                </p>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div class="col-left">
+                        <h3>
+                            Toy Experiment
+                        </h3>
+                        <p>
+Without proper guidance, sampling trajectories <strong>drift off the data manifold</strong>, creating fragmented or OOD results. While common fixes like CFG can help, 
+they often oversimplify the geometry or leave stray artifacts. In contrast, <storng>TAG</storng> effectively steers the sampling process along high-density branches of the data, 
+<strong>suppressing outliers</strong>, thus achieving the result most faithful to the ground truth.
+                        </p>
+                    </div>
+                    <div class="col-right img">
+                                <img src="./asset/fig3.png" class="img medium-image" alt="Comparisons diagram"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                                <p class="image-caption">
+                                    Sampling on a 2D branching distribution (Karras et al., 2024) under different guidance methods. TAG effectively steers sampling trajectories toward high-density regions along the branches, suppressing off-manifold outliers to achieve the highest similarity to the ground truth distribution.
+                                </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="framework" class="section">
+                <h2>Theorem</h2>
+                <p></p>
+                <div class="image-container">
+                    <div class="image-content">
+                        <img src="asset/thm.png" class="img large-image" alt="Overall framework"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                    </div>
+                </div>
+                <p>
+We prove that amplifying the tangential component <strong>monotonically increases the first-order Taylor gain</strong> of the log-likelihood, which effectively steers the sampling trajectory toward <strong>higher-density regions</strong> of the data manifold. Specifically:
+<br><br>
+<strong>(i)</strong> The first-order Taylor gain is a monotonically increasing function of the tangential amplification factor (η).The theorem shows that the derivative of the gain with respect to η is always non-negative. This mathematically confirms that increasing the tangential amplification consistently increases (or maintains) the movement toward high-probability regions.
+<br><strong>(ii)</strong> The gain increment from a TAG step is always greater than or equal to that of a standard base step. The analysis explicitly shows that the difference in gain between a TAG-modified step and the base step is non-negative, with equality only holding if no amplification is applied (η=1). This guarantees that TAG provides a direct improvement in log-likelihood gain at each step of the sampling process.
+                </p>
+            </section>
+            
+            <section id="experimental-results" class="section">
+                <h2> Experimental results </h2>
+                <p class="paragraph"> We apply TAG at inference on pretrained backbones: Stable Diffusion v1.5 for the main experiments and Stable Diffusion 3 for flow matching. Unconditional results are reported on ImageNet-1K val; text-conditional results use MS-COCO 2014 val.</p> 
+                <h3>Unconditional Generation with SD 1.5</h3>
+                <div class="table-container">
+<!-- Table 1 -->
+<table class="advantages-table">
+  <caption><strong>Table 1.</strong> Quantitative results across previous guidance methods and +TAG sampling settings for unconditional generation<br>(ImageNet val, 30K samples, SD v1.5, DDIM).</caption>
+  <thead>
+    <tr>
+      <th>Methods</th>
+      <th>Guidance Scale</th>
+      <th>TAG Amp. (η)</th>
+      <th>#NFEs</th>
+      <th>#Steps</th>
+      <th>FID ↓</th>
+      <th>IS ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <td>DDIM (Song et al., 2020a)</td>
+      <td>–</td>
+      <td>–</td>
+      <td>50</td>
+      <td>50</td>
+      <td>76.942</td>
+      <td>14.792</td>
+    </tr>
+    <tr>
+      <td>DDIM <strong>+ TAG</strong></td>
+      <td>–</td>
+      <td>1.05</td>
+      <td>50</td>
+      <td>50</td>
+      <td>67.971</td>
+      <td>16.620</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>DDIM <strong>+ TAG</strong></td>
+      <td>–</td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>50</td>
+      <td>67.805</td>
+      <td>16.487</td>
+    </tr>
+    <tr>
+      <td>DDIM <strong>+ TAG</strong></td>
+      <td>–</td>
+      <td>1.25</td>
+      <td>50</td>
+      <td>50</td>
+      <td>71.801</td>
+      <td>15.815</td>
+    </tr>
+    <tr>
+      <td>SAG (Hong et al., 2023)</td>
+      <td>0.2</td>
+      <td>–</td>
+      <td>50</td>
+      <td>25</td>
+      <td>71.984</td>
+      <td>15.803</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>SAG <strong>+ TAG</strong></td>
+      <td>0.2</td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>25</td>
+      <td>65.340</td>
+      <td>17.014</td>
+    </tr>
+    <tr>
+      <td>PAG (Ahn et al., 2024)</td>
+      <td>3</td>
+      <td>–</td>
+      <td>50</td>
+      <td>25</td>
+      <td>64.595</td>
+      <td>19.30</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>PAG <strong>+ TAG</strong></td>
+      <td>3</td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>25</td>
+      <td>63.619</td>
+      <td>19.90</td>
+    </tr>
+    <tr>
+      <td>SEG (Hong, 2024)</td>
+      <td>3</td>
+      <td>–</td>
+      <td>50</td>
+      <td>25</td>
+      <td>65.099</td>
+      <td>17.266</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>SEG <strong>+ TAG</strong></td>
+      <td>3</td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>25</td>
+      <td>60.064</td>
+      <td>18.606</td>
+    </tr>
+  </tbody>
+</table>
+                </div>  
+<h3>Unconditional Generation with SD 2.1 & SDXL</h3>
+<div class="table-container">
+<!-- Table 2 -->
+<table class="advantages-table">
+  <caption><strong>Table 2.</strong> Quantitative results of TAG on various Stable Diffusion baselines (10K ImageNet val, DDIM 50 NFEs).</caption>
+  <thead>
+    <tr>
+      <th>Methods</th>
+      <th>TAG Amp. (η)</th>
+      <th>#NFEs</th>
+      <th>#Steps</th>
+      <th>FID ↓</th>
+      <th>IS ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SD v2.1 (Rombach et al., 2022)</td>
+      <td>–</td>
+      <td>50</td>
+      <td>50</td>
+      <td>100.977</td>
+      <td>11.553</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>SD v2.1 <strong>+ TAG</strong></td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>50</td>
+      <td>88.788</td>
+      <td>13.311</td>
+    </tr>
+    <tr>
+      <td>SDXL (Podell et al., 2024)</td>
+      <td>–</td>
+      <td>50</td>
+      <td>50</td>
+      <td>124.407</td>
+      <td>9.034</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>SDXL <strong>+ TAG</strong></td>
+      <td>1.20</td>
+      <td>50</td>
+      <td>50</td>
+      <td>113.798</td>
+      <td>9.716</td>
+    </tr>
+  </tbody>
+</table>
+</div>  
+
+<h3>Unconditional Generation with Flow Matching (SD3)</h3>
+<div class="table-container">
+<!-- Table 5 -->
+<table class="advantages-table">
+  <caption>
+    <strong>Table 3.</strong>
+    Quantitative results for flow matching–based generator (ImageNet val, 30K samples; all images generated with 50 NFEs).
+  </caption>
+  <thead>
+    <tr>
+      <th>Methods w/ SD3</th>
+      <th>TAG Amp. (η)</th>
+      <th>FID ↓</th>
+      <th>IS ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Esser et al. (2024)</td>
+      <td>–</td>
+      <td>96.383</td>
+      <td>11.831</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>+ TAG</strong></td>
+      <td>1.05</td>
+      <td>91.706</td>
+      <td>12.274</td>
+    </tr>
+  </tbody>
+</table>
+</div>  
+
+<h3>Unconditional Generation with <strong>fewer NFEs</strong></h3>
+<div class="table-container">
+<!-- Table 3 -->
+<table class="advantages-table">
+  <caption><strong>Table 4.</strong> Quantitative results for unconditional image generation on ImageNet (SD v1.5). Metrics on 30K samples;<br>inference time averaged over 100 runs (RTX 4090).</caption>
+  <thead>
+    <tr>
+      <th>Methods</th>
+      <th>TAG Amp. (η)</th>
+      <th>#NFEs</th>
+      <th>Inference Time (s)</th>
+      <th>FID ↓</th>
+      <th>IS ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDIM (Song et al., 2020a)</td>
+      <td>–</td>
+      <td>50</td>
+      <td>1.9507</td>
+      <td>76.942</td>
+      <td>14.792</td>
+    </tr>
+    <tr>
+      <td>DDIM <strong>+ TAG</strong></td>
+      <td>1.15</td>
+      <td>25</td>
+      <td>1.0191</td>
+      <td>72.535</td>
+      <td>15.528</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>DDIM <strong>+ TAG</strong></td>
+      <td>1.15</td>
+      <td>50</td>
+      <td>1.9674</td>
+      <td>67.805</td>
+      <td>16.487</td>
+    </tr>
+    <tr>
+      <td>DPM++ (Lu et al., 2025)</td>
+      <td>–</td>
+      <td>10</td>
+      <td>0.4433</td>
+      <td>85.983</td>
+      <td>13.037</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>DPM++ <strong>+ TAG</strong></td>
+      <td>1.15</td>
+      <td>10</td>
+      <td>0.4522</td>
+      <td>74.238</td>
+      <td>14.930</td>
+    </tr>
+  </tbody>
+</table>
+</div>  
+
+<!-- 
+                <div class="two-col">
+                    <div class="col-left">
+                        <h3>
+                            ImageNet with 100 labels per class
+                        </h3>
+                        <p class="paragraph">
+On ImageNet with SEW-ResNet-50, SpikeMatch outperforms SoftMatch, showing strong effectiveness even with large-scale data and deep backbones.
+
+                        </p>
+                    </div>
+                    <div class="col-right-table">
+                        <table class="advantages-table">
+                        <thead>
+                            <tr>
+                            <th rowspan="2">Methods</th>
+                            </tr>
+                            <tr>
+                            <th>Top-1</th>
+                            <th>Top-5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>SoftMatch</td>
+                            <td>45.66</td>
+                            <td>71.44</td>
+                            </tr>
+                            <tr class="highlight-row">
+                            <td>SpikeMatch</td>
+                            <td><strong>49.68</strong></td>
+                            <td><strong>75.07</strong></td>
+                            </tr>
+                        </table>
+                        <div class="image-caption">
+                            Accuracy (%) on ImageNet using 100 labels per class.
+                        </div>
+                    </div>
+                </div> -->
+            <h3>
+                Conditional Generation with MS-COCO2014
+            </h3>
+                <div class="table-container"> 
+                    <!-- Table 4 -->
+<table class="advantages-table">
+  <caption>
+    <strong>Table 5.</strong>
+    Quantitative results across guidance-only (CFG, PAG, SEG) and guidance w/ TAG on MS-COCO 2014 val (10k random text prompts). All images sampled with Stable Diffusion v1.5 using the DDIM sampler; cfg_scale=2.5, pag_scale=2.5, seg_scale=2.5.
+  </caption>
+  <thead>
+    <tr>
+      <th>Methods</th>
+      <th>TAG Amp. (η)</th>
+      <th>#NFEs</th>
+      <th>#Steps</th>
+      <th>FID ↓</th>
+      <th>CLIPScore ↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Condition-Only</td>
+      <td>–</td>
+      <td>30</td>
+      <td>30</td>
+      <td>85.145</td>
+      <td>19.77 ± 3.43</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Condition-Only + <strong>TAG</strong></td>
+      <td>1.2</td>
+      <td>30</td>
+      <td>30</td>
+      <td>58.438</td>
+      <td>21.88 ± 2.99</td>
+    </tr>
+    <tr>
+      <td>CFG (Ho &amp; Salimans, 2021)</td>
+      <td>–</td>
+      <td>100</td>
+      <td>50</td>
+      <td>26.266</td>
+      <td>22.60 ± 3.28</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>CFG + <strong>C-TAG</strong></td>
+      <td>2.5</td>
+      <td>30</td>
+      <td>15</td>
+      <td>23.414</td>
+      <td>22.82 ± 3.21</td>
+    </tr>
+    <tr>
+      <td>PAG (Ahn et al., 2024)</td>
+      <td>–</td>
+      <td>50</td>
+      <td>25</td>
+      <td>24.280</td>
+      <td>22.72 ± 3.25</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>PAG + <strong>C-TAG</strong></td>
+      <td>1.25</td>
+      <td>50</td>
+      <td>25</td>
+      <td>22.109</td>
+      <td>22.07 ± 3.49</td>
+    </tr>
+    <tr>
+      <td>SEG (Hong, 2024)</td>
+      <td>–</td>
+      <td>50</td>
+      <td>25</td>
+      <td>29.215</td>
+      <td>18.17 ± 3.55</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>SEG + <strong>C-TAG</strong></td>
+      <td>1.25</td>
+      <td>50</td>
+      <td>25</td>
+      <td>23.446</td>
+      <td>16.94 ± 3.96</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </section>
+
+<section id="visualizations" class="section">
+  <h2>Visualization of TAG on various Diffusion Backbone</h2>
+
+  <div class="image-sequence">
+    <figure class="image-block">
+      <img
+        src="./asset/qualitative/sd15.png"
+        class="comparison-slideshow-image"
+        alt="Qualitative results on Stable Diffusion 1.5"
+        loading="lazy">
+    </figure>
+
+    <figure class="image-block" style="margin: -125px 0;">
+      <img
+        src="./asset/qualitative/sd21.png"
+        class="comparison-slideshow-image"
+        alt="Qualitative results on Stable Diffusion 2.1"
+        loading="lazy">
+    </figure>
+
+    <figure class="image-block" style="margin: -125px 0;">
+      <img
+        src="./asset/qualitative/sdxl.png"
+        class="comparison-slideshow-image"
+        alt="Qualitative results on Stable Diffusion XL"
+        loading="lazy">
+    </figure>
+
+    <figure class="image-block" style="margin: -125px 0;">
+      <img
+        src="./asset/qualitative/sd3.png"
+        class="comparison-slideshow-image"
+        alt="Qualitative results on Stable Diffusion 3"
+        loading="lazy">
+    </figure>
+  </div>
+</section>
+
+
+            <section id="conclusion" class="section">
+                <h2>Conclusion</h2>
+
+                <p class="paragraph">
+                    This paper introduces a new perspective for addressing the problem of hallucinations 
+                    in diffusion models, demonstrating that the tangential component of the sampling update 
+                    encodes critical semantic structure. Based on this geometric insight, we propose <strong>T</strong>angential 
+                    <strong>A</strong>mplifying <strong>G</strong>uidance <strong>(TAG)</strong>, a practical, architecture-agnostic method that amplifies the tangential 
+                    component. By doing so, TAG effectively steers the sampling trajectory toward higher-density regions
+                    of the data manifold, generating samples with fewer hallucinations and improved fidelity. Our method
+                    achieved good samples without requiring retraining or incurring any additional heavy computational overhead, 
+                    offering a practical, plug-and-play solution for enhancing existing diffusion model backbones.
+                </p>
+            </section>
+
+            <div class="citation add-top-padding">
+                <h1 id="citation">Citation</h1>
+                <p> If you use this work or find it helpful, please consider citing: </p>
+                <pre id="codecell0">
+@misc{cho2025tagtangentialamplifyingguidancehallucinationresistant,
+      title={TAG:Tangential Amplifying Guidance for Hallucination-Resistant Diffusion Sampling}, 
+      author={Hyunmin Cho and Donghoon Ahn and Susung Hong and Jee Eun Kim and Seungryong Kim and Kyong Hwan Jin},
+      year={2025},
+      eprint={2510.04533},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.04533}, 
+}
+                </pre>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="credit">Credit: The design of this project page is inspired by previous academic project pages, such as <a href="https://llm-grounded-diffusion.github.io/" target="_blank">LLM-grounded Diffusion</a>, <a href="https://describe-anything.github.io/" target="_blank">Describe-anything</a>, <a href="https://cvlab-kaist.github.io/VIRAL/" target="_blank">VIRAL</a>, and <a href="https://cvlab-kaist.github.io/SpikeMatch/" target="_blank">SpikeMatch</a>.</p>
+        </div>
+    </footer>
+
+
+    <script>
+    function toggleMute(element) {
+        const video = element.parentElement.querySelector('video');
+        const icon = element.querySelector('i');
+        const text = element.querySelector('.unmute-text');
+        
+        if (video.muted) {
+            video.muted = false;
+            icon.className = 'fa fa-volume-up';
+            text.textContent = 'Mute';
+        } else {
+            video.muted = true;
+            icon.className = 'fa fa-volume-off';
+            text.textContent = 'Click to unmute';
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', function() {
+                const overlay = this.parentElement.querySelector('.unmute-overlay');
+                if (overlay) overlay.style.opacity = '0.8';
+            });
+            
+            video.addEventListener('pause', function() {
+                const overlay = this.parentElement.querySelector('.unmute-overlay');
+                if (overlay) overlay.style.opacity = '0.8';
+            });
+        });
+
+        // Initialize all slideshows
+        document.querySelectorAll('.slideshow-container').forEach(container => {
+            const slideshow = container.querySelector('.slideshow');
+            const slides = slideshow.querySelectorAll('.slide');
+            const prevButton = container.querySelector('.slideshow-nav.prev');
+            const nextButton = container.querySelector('.slideshow-nav.next');
+            const playPauseButton = container.querySelector('.play-pause');
+            
+            let currentSlide = 0;
+            let autoplayInterval;
+            let isPlaying = true;
+
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            function changeSlide(n) {
+                showSlide(currentSlide + n);
+                resetAutoplay();
+            }
+
+            function togglePlayPause() {
+                if (isPlaying) {
+                    clearInterval(autoplayInterval);
+                    playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
+                } else {
+                    startAutoplay();
+                    playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
+                }
+                isPlaying = !isPlaying;
+            }
+
+            function startAutoplay() {
+                autoplayInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            }
+
+            function resetAutoplay() {
+                clearInterval(autoplayInterval);
+                if (isPlaying) {
+                    startAutoplay();
+                }
+            }
+
+            // Initialize this slideshow
+            showSlide(0);
+            startAutoplay();
+
+            // Add event listeners
+            prevButton.addEventListener('click', () => changeSlide(-1));
+            nextButton.addEventListener('click', () => changeSlide(1));
+            playPauseButton.addEventListener('click', togglePlayPause);
+        });
+
+        // Handle main video play button
+        const mainVideo = document.querySelector('.main-video');
+        const playButton = document.querySelector('.play-button-overlay');
+        
+        if (mainVideo && playButton) {
+            // Click play button to play video
+            playButton.addEventListener('click', () => {
+                mainVideo.play();
+                mainVideo.classList.add('playing');
+            });
+
+            // Handle video play/pause events
+            mainVideo.addEventListener('play', () => {
+                mainVideo.classList.add('playing');
+            });
+
+            mainVideo.addEventListener('pause', () => {
+                mainVideo.classList.remove('playing');
+            });
+
+            mainVideo.addEventListener('ended', () => {
+                mainVideo.classList.remove('playing');
+            });
+        }
+
+        // -----------------------------
+        // 🖼️ Click-to-zoom Lightbox
+        // -----------------------------
+        // Build overlay once
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox-overlay';
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        lightbox.innerHTML = '<img alt="Expanded image">';
+        document.body.appendChild(lightbox);
+        const lightboxImg = lightbox.querySelector('img');
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '';
+            lightbox.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            lightboxImg.src = '';
+        }
+
+        // Close on click anywhere or on Esc
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // Mark target images as zoomable and wire up click
+        const zoomableImages = document.querySelectorAll('.image-container img, .slideshow img, .main-content img.img, .hero-section img.img');
+        zoomableImages.forEach(img => {
+            img.classList.add('zoomable');
+            img.addEventListener('click', () => {
+                // support optional high-res source via data-fullsrc
+                const src = img.getAttribute('data-fullsrc') || img.currentSrc || img.src;
+                openLightbox(src, img.alt);
+            });
+        });
+    });
+    </script>
+</body>
+</html> 
