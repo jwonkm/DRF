@@ -4,13 +4,6 @@
     <meta charset="utf-8" />
     <title>Dual Recursive Feedback on Generation and Appearance Latents for Pose-Robust Text-to-Image Diffusion</title>
 
-
-    <script>
-        window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-        svg: { fontCache: 'global' }
-        };
-    </script>
     <!-- Favicon references -->
 
     <meta
@@ -38,7 +31,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap"
         rel="stylesheet">
-    <link href="style.css%3F.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
 
     <!-- 🔎 Added minimal CSS for click‑to‑zoom lightbox -->
     <style>
@@ -138,7 +131,7 @@
                     <!-- <sup>1</sup>KAIST AI &nbsp;&nbsp; <sup>2</sup>Korea Aerospace University &nbsp;&nbsp; -->
                     <sup>1</sup>Korea University &nbsp;&nbsp; <sup>2</sup>Sookmyung Women's University &nbsp;&nbsp;
                     <br>
-                    <sup>*</sup>co-first authors &nbsp;&nbsp; <sup>†</sup>corresponding authors
+                    <sup>†</sup>corresponding authors
                 </div>
             </div>
             <div class="link-labels base-row">
@@ -177,7 +170,7 @@
     <main class="main-content">
 
         <div class="container">
-                <img id="teaser" src="./asset/qualitative/main_qual.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                <img id="teaser" src="./asset/main_qual.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
 
             <div id="abstract" class="base-row section">
                 <h2>Abstract</h2>
@@ -194,7 +187,7 @@
             <div class="video-container">
             <video
               class="main-video"
-              src="./asset/concept_drf.mp4"
+              src="./asset/DRF_concept_fig.mp4"
               autoplay
               loop
               muted
@@ -210,7 +203,7 @@
 
             <section id="method" class="section">
                 <h2>Method</h2>
-                    <img id="teaser" src="./asset/flowchart.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+                    <img id="teaser" src="./asset/pipeline.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
                 <p class="paragraph">
                     DRF iteratively updates by obtaining guided noise $\epsilon_{\theta}^a$ and $\epsilon_{\theta}^g$ through appearance and generation feedback. The distillation function derived from these two noises is combined to update the generation latent.
                 </p>
