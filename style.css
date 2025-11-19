@@ -1016,11 +1016,12 @@ pre {
 }
 
 /* Shrink image inside two-column framework section (Option 1) */
-.two-col .col-right img .small-image{
-  max-width: 80%; /* adjust 70~85% as needed */
+.two-col .col-right .small-image {
+  max-width: 80%;
   margin: 0 auto 0.5rem auto;
   display: block;
 }
+
 
 /* Adjust column width ratio: give more space to text (left) than image (right) */
 .two-col .col-left {
