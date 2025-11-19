@@ -177,23 +177,21 @@
     <main class="main-content">
 
         <div class="container">
-                <img id="teaser" src="./asset/qualitative/teaser_qual.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
-            <div class="tldr">
-                <b>TL;DR</b>: We amplify the tangential part of each sampler update while keeping the radial term unchanged, steering trajectories along higher-density regions, resulting in higher-quality samples.
-            </div>
+                <img id="teaser" src="./asset/qualitative/main_qual.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
 
-            <div id="overview" class="base-row section">
-                <h2>Overview</h2>
+            <div id="abstract" class="base-row section">
+                <h2>Abstract</h2>
                 <p class="paragraph">
-                    Diffusion models often hallucinate by drifting off the data manifold. Tangential Amplifying Guidance (TAG) is a <strong>plug-and-play, architecture-agnostic inference method</strong> that amplifies the tangential component of each update while preserving the radial term, 
-                    <strong>steering trajectories toward higher-density regions</strong> and improving fidelity without extra model evaluations.
+                    Recent advancements in controllable text-to-image (T2I) diffusion models, such as Ctrl-X and FreeControl, have demonstrated robust spatial and appearance control without requiring auxiliary module training. However, these models often struggle to accurately preserve spatial structures and fail to capture fine-grained conditions related to object poses and scene layouts. To address these challenges, we propose a training-free <strong>Dual Recursive Feedback (DRF)</strong> system that properly reflects control conditions in controllable T2I models. 
+                    The proposed DRF consists of appearance feedback and generation feedback that recursively refines the intermediate latents to better reflect the given appearance information and the user's intent.
+                    This dual-update mechanism guides latent representations toward reliable manifolds, effectively integrating structural and appearance attributes. Our approach enables fine-grained generation even between class-invariant structure-appearance fusion, such as transferring human motion onto a tiger's form. Extensive experiments demonstrate the efficacy of our method in producing high-quality, semantically coherent, and structurally consistent image generations.
                 </p>
             </div>
             <h3>
-                Conceptual Visualization of TAG
+                Conceptual Visualization of Dual Recursive Feedback
             </h3>
-                    <img id="teaser" src="./asset/fig1.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
-            <p class="paragraph"> While standard sampling produces <strong>hallucinations</strong> by drifting into low-probability areas, <strong>TAG</strong> guides the generation process toward high-probability regions, resulting in higher-quality samples.
+                    <img id="teaser" src="./asset/concept_fig.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
+            <p class="paragraph"> Illustration of a diffusion-based generative model with latent feedback mechanisms (DRF) for controlling both appearance and generation latent in <strong>class-invariant text-to-image synthesis</strong>. The proposed method refines latent updates to achieve fine-grained control, improving results with desired structural and appearance attributes.
             </p>
 
             <section id="motivation" class="section">
