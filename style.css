@@ -1001,6 +1001,12 @@ pre {
   margin-bottom: 0;
 }
 
+/* === Method 섹션용: 1:1 equal columns === */
+.two-col.method-equal .col-left,
+.two-col.method-equal .col-right {
+  flex: 1 1 0;
+}
+
 /* Ensure nested image container fits column */
 .two-col .image-container {
   margin: 0;
