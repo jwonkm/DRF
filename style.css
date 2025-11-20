@@ -1138,3 +1138,11 @@ pre {
 .highlight-row {
     background-color: #e8e8cf2c;
 }
+
+.section.base-row {
+  margin-top: 5rem;   /* 원하는 만큼 숫자 조절 (예: 4rem, 6rem) */
+}
+
+#teaser {
+  margin-bottom: 3rem;   /* 숫자 키우면 더 많이 띔 */
+}
