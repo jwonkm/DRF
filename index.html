@@ -198,53 +198,86 @@
 
             <section id="method" class="section">
                 <h2>Method</h2>
-                    <img id="teaser" src="./asset/pipeline.png" alt="A descriptive text for the image"style="width:100%; max-width:980px; max-height:420px; height:auto; object-fit:contain; display:block; margin:0 auto;">
-                <p class="paragraph">
-                    DRF iteratively updates by obtaining guided noise $\epsilon_{\theta}^a$ and $\epsilon_{\theta}^g$ through appearance and generation feedback. The distillation function derived from these two noises is combined to update the generation latent.
-                </p>
+            
+                <!-- 1) 위쪽: Appearance / Generation feedback 두 컬럼 텍스트 -->
                 <div class="two-col">
-                  <div class="col-left">
-                    <h3>
-                      Dual Recursive Feedback:<br>
-                      Appearance &amp; Generation Feedback
-                    </h3>
-                    <p class="paragraph">
-                      <strong>Appearance feedback</strong> refines the appearance latent
-                      \(z_t^a\) so that the denoised estimate \(z_{0|t}^a\) converges toward a
-                      stable appearance code \(z_0^a\) extracted from the reference image.
-                      We modify the stochastic update of \(z_t^a\) and minimize
-                      a reconstruction loss between \(z_{0|t}^a\) and \(z_0^a\).
-                      This fixed-point style update suppresses appearance leakage and
-                      preserves identity even under class-invariant structure–appearance fusion.
-                    </p>
-                    <p class="paragraph">
-                      <strong>Generation feedback</strong> operates on the fused generation
-                      latent \(z_t^g\). At each recursive step, we treat the previous output
-                      \(z_{\mathrm{prev}}^g\) as another fixed point and enforce the current
-                      posterior \(z_{0|t}^g\) to stay close to it via an output-space loss.
-                      An iteration-dependent weight \(w_{\mathrm{iter}}^{(i)}\) gradually
-                      shifts the emphasis from appearance feedback (early steps) to
-                      generation feedback (later steps), so DRF first locks in the
-                      reference identity and then improves alignment with the target
-                      structure and text prompt.
-                    </p>
-                  </div>
-                
-                  <div class="col-right img">
-                    <img src="./asset/algorithm.png"
-                         alt="Algorithm : Dual Recursive Feedback"
-                         style="width:100%; max-width:980px; max-height:420px;
-                                height:auto; object-fit:contain; display:block; margin:0 auto;">
-                    <p class="image-caption">
-                      Algorithm. Dual Recursive Feedback. Appearance feedback pulls the
-                      appearance latent toward an identity-preserving fixed point, while
-                      generation feedback recursively aligns the fused latent with the
-                      desired structure and text condition.
-                    </p>
-                  </div>
+                    <div class="col-left">
+                        <h3>Appearance feedback</h3>
+                        <p class="paragraph">
+                            Appearance feedback refines the appearance latent \(z_t^a\) so that the
+                            denoised estimate \(z_{0|t}^a\) converges toward a stable appearance
+                            code \(z_0^a\) extracted from the reference image. We modify the
+                            stochastic update of \(z_t^a\) and minimize a reconstruction loss
+                            between \(z_{0|t}^a\) and \(z_0^a\). This fixed-point style update
+                            suppresses appearance leakage and preserves identity even under
+                            class-invariant structure–appearance fusion.
+                        </p>
+                    </div>
+            
+                    <div class="col-right">
+                        <h3>Generation feedback</h3>
+                        <p class="paragraph">
+                            Generation feedback operates on the fused generation latent \(z_t^g\).
+                            At each recursive step, we treat the previous output
+                            \(z_{\mathrm{prev}}^g\) as another fixed point and enforce the current
+                            posterior \(z_{0|t}^g\) to stay close to it via an output-space loss.
+                            An iteration-dependent weight \(w_{\text{iter}}^{(i)}\) gradually shifts
+                            the emphasis from appearance feedback (early steps) to generation
+                            feedback (later steps), so DRF first locks in the reference identity
+                            and then improves alignment with the target structure and text prompt.
+                        </p>
+                    </div>
                 </div>
-
-
+            
+                <!-- 2) 가운데: 파이프라인 그림 전체 폭 -->
+                <img id="teaser"
+                     src="./asset/pipeline.png"
+                     alt="DRF pipeline for controllable T2I"
+                     style="width:100%; max-width:980px; max-height:420px; height:auto;
+                            object-fit:contain; display:block; margin:2rem auto 0.5rem auto;">
+            
+                <p class="paragraph">
+                    DRF iteratively updates by obtaining guided noise \(\epsilon_{\theta}^a\) and
+                    \(\epsilon_{\theta}^g\) through appearance and generation feedback. The
+                    distillation function derived from these two noises is combined to update the
+                    generation latent.
+                </p>
+            
+                <!-- 3) 아래쪽: 왼쪽 Dual RF 설명, 오른쪽 알고리즘 그림 -->
+                <div class="two-col" style="margin-top:1.5rem;">
+                    <div class="col-left">
+                        <h3>Dual Recursive Feedback</h3>
+                        <p class="paragraph">
+                            Dual Recursive Feedback (DRF) couples the two feedback loops into a
+                            single training-free guidance rule. At each sampling step, we run the
+                            controllable T2I backbone with appearance and generation prompts to
+                            obtain guided noises \(\epsilon_\theta^a\) and \(\epsilon_\theta^g\),
+                            from which we form denoised latents \(z_{0|t}^a\) and \(z_{0|t}^g\).
+                            DRF defines an appearance reconstruction loss that pulls
+                            \(z_{0|t}^a\) toward the reference code \(z_0^a\), and a
+                            generation-consistency loss that keeps \(z_{0|t}^g\) close to the
+                            previous output \(z_{\mathrm{prev}}^g\), weighted by
+                            \(w_{\text{iter}}^{(i)}\). The gradient of this combined DRF loss is
+                            used to refine the shared noise update for \(z_t^g\), so that samples
+                            are recursively attracted to an identity-preserving, pose-consistent
+                            fixed point while remaining fully plug-and-play with the underlying
+                            diffusion sampler.
+                        </p>
+                    </div>
+            
+                    <div class="col-right img">
+                        <img src="./asset/algorithm.png"
+                             alt="Algorithm 1: Dual Recursive Feedback"
+                             style="width:100%; max-width:980px; max-height:420px;
+                                    height:auto; object-fit:contain; display:block; margin:0 auto;">
+                        <p class="image-caption">
+                            Algorithm&nbsp;1. Dual Recursive Feedback. Appearance feedback pulls
+                            the appearance latent toward an identity-preserving fixed point, while
+                            generation feedback recursively aligns the fused latent with the
+                            desired structure and text condition.
+                        </p>
+                    </div>
+                </div>
             </section>
 
             
