@@ -14,14 +14,20 @@
     <img src="https://img.shields.io/github/stars/jwonkm/DRF?style=social" alt="GitHub stars">
   </a>
 </p>
-[Jiwon Kim](https://scholar.google.com/citations?user=LvFTDwwAAAAJ&hl)<sup>1</sup>,
-Pureum Kim<sup>1</sup>,
-[SeonHwa Kim](https://scholar.google.com/citations?user=RE9ZWDwAAAAJ&hl=ko&oi=sra)<sup>1</sup>,
-Soobin Park<sup>2</sup>,
-[Eunju Cha](https://scholar.google.com/citations?user=mqNGNqEAAAAJ&hl=ko)<sup>2</sup>,
-[Kyong Hwan Jin](https://scholar.google.com/citations?user=aLYNnyoAAAAJ&hl=ko&oi=sra)<sup>1</sup>
 
-<sup>1</sup> Korea University, <sup>2</sup> Sookmyung Women's University
+<p align="center">
+  <a href="https://scholar.google.com/citations?user=LvFTDwwAAAAJ&hl">Jiwon Kim</a><sup>1</sup>,
+  Pureum Kim<sup>1</sup>,
+  <a href="https://scholar.google.com/citations?user=RE9ZWDwAAAAJ&hl=ko&oi=sra">SeonHwa Kim</a><sup>1</sup>,
+  Soobin Park<sup>2</sup>,
+  <a href="https://scholar.google.com/citations?user=mqNGNqEAAAAJ&hl=ko">Eunju Cha</a><sup>2</sup>,
+  <a href="https://scholar.google.com/citations?user=aLYNnyoAAAAJ&hl=ko&oi=sra">Kyong Hwan Jin</a><sup>1</sup>
+</p>
+
+<p align="center">
+  <sup>1</sup> Korea University &nbsp;&nbsp;
+  <sup>2</sup> Sookmyung Women's University
+</p>
 
 ![Algorithm](https://github.com/jwonkm/DRF/blob/main/docs/asset/main_qual2.png)
 ## Environment Setup
