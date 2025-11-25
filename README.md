@@ -2,27 +2,18 @@
 
 <p align="center">
   <!-- arXiv / Paper -->
-  <a href="https://arxiv.org/abs/2508.09575"
-     style="text-decoration:none; margin:0 4px;">
-    <img src="https://img.shields.io/badge/arXiv-Paper-E1523D.svg?labelColor=555555&logo=arxiv&logoColor=white"
-         alt="arXiv Paper">
+  <a href="https://arxiv.org/abs/2508.09575">
+    <img src="https://img.shields.io/badge/arXiv-Paper-E1523D.svg?labelColor=555555&logo=arxiv&logoColor=white" alt="arXiv Paper">
   </a>
-
   <!-- Project Page -->
-  <a href="https://jwonkm.github.io/DRF/"
-     style="text-decoration:none; margin:0 4px;">
-    <img src="https://img.shields.io/badge/Project-Page-FFC857.svg?labelColor=555555"
-         alt="Project Page">
+  <a href="https://jwonkm.github.io/DRF/">
+    <img src="https://img.shields.io/badge/Project-Page-FFC857.svg?labelColor=555555" alt="Project Page">
   </a>
-
   <!-- GitHub Stars -->
-  <a href="https://github.com/jwonkm/DRF"
-     style="text-decoration:none; margin:0 4px;">
-    <img src="https://img.shields.io/github/stars/jwonkm/DRF?style=social"
-         alt="GitHub stars">
+  <a href="https://github.com/jwonkm/DRF">
+    <img src="https://img.shields.io/github/stars/jwonkm/DRF?style=social" alt="GitHub stars">
   </a>
 </p>
-
 
 <p align="center">
   <a href="https://scholar.google.com/citations?user=LvFTDwwAAAAJ&hl">Jiwon Kim</a><sup>1</sup>,
