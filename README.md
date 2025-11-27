@@ -1,16 +1,13 @@
 # Dual Recursive Feedback on Generation and Appearance Latents for Pose-Robust Text-to-Image Diffusion (ICCV 2025)
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2508.09575">
-    <img src="https://img.shields.io/badge/arXiv-Paper-E1523D.svg?labelColor=555555&logo=arxiv&logoColor=white" alt="arXiv Paper" />
-  </a>
-  <a href="https://jwonkm.github.io/DRF/">
-    <img src="https://img.shields.io/badge/Project-Page-FFC857.svg?labelColor=555555" alt="Project Page" />
-  </a>
-  <a href="https://github.com/jwonkm/DRF">
-    <img src="https://img.shields.io/github/stars/jwonkm/DRF?style=social" alt="GitHub stars" />
-  </a>
+  <a href="https://arxiv.org/abs/2508.09575"><img src="https://img.shields.io/badge/arXiv-2508.09575-%23B31B1B"></a>
+  <a href="https://jwonkm.github.io/DRF/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>  
+  <a href="https://github.com/jwonkm/DRF"><img src="https://img.shields.io/github/stars/jwonkm/DRF?style=social" alt="GitHub stars" /></a>  
+  <br>
 </p>
+
+This is the official implmentation of the paper *"Dual Recursive Feedback on Generation and Appearance Latents for Pose-Robust Text-to-Image Diffusion (ICCV 2025)"*
 
 
 <p align="center">
